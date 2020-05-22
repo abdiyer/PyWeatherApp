@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Weather App</title>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Ayer</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
+  </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-2">
+            <h1>WeatherApp</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="city">City</label>
+                {{ form.name }}
+                <input type="submit" name="send" value="Get" class="mt-2 btn btn-danger">
+            </form>
+        </div>
+        <div class="col-4 offset-2">
+            <h1>Инфо</h1>
+                {% for info in all_info %}
+            <div class="alert alert-danger">
+                <b>City:</b> {{ info.city }} <br>
+                <b>Temperature:</b> {{ info.temp }} C<sup>o</sup> <br>
+                <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Weather pic">
+            </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
